@@ -21,7 +21,6 @@ int main() {
     cout << i << "          " << temp << "  " << true_value << " "
          << std::abs(true_value - temp) << endl;
   }
-
   return 0;
 }
 
