@@ -1,7 +1,7 @@
+#include <cmath>
 #include <iostream>
-
 using std::cout, std::endl, std::cin;
-char* buildstr(char a, char b, int n);
+
 struct rect {
   double x;
   double y;
@@ -13,6 +13,7 @@ struct polar {
 rect polar_to_rect(polar* p);
 polar rect_to_polar(rect* r);
 
+// 동일 로직의 함수는 한번만 호출하고 스택 변수에 담아서 cout하자.
 int main() {
   rect rect_input;
   polar polar_input;
@@ -26,9 +27,11 @@ int main() {
     rect_input.x = x;
     rect_input.y = y;
   }
-
-  cout << "distance = " << rect_to_polar(r).distance << ", "
-       << rect_to_polar(r).angle << endl
+  double deg = 0.0;
+  deg = (rect_to_polar(r).angle) * (57.29577951);
+  cout << "distance = " << rect_to_polar(r).distance
+       << ", angle = " << rect_to_polar(r).angle << " rad " << "(" << deg
+       << " deg)" << endl
        << "[polar -> rect]" << endl;
 
   cout << "Enter distance and angle(deg): ";
@@ -42,4 +45,16 @@ int main() {
   return 0;
 }
 
-rect polar_to_rect(polar* p) { return }
+polar rect_to_polar(rect* r) {
+  polar result;
+  result.distance = sqrt(r->x * r->x + r->y * r->y);
+  result.angle = atan2(r->y, r->x);
+  return result;
+}
+
+rect polar_to_rect(polar* p) {
+  rect result;
+  result.x = p->distance * std::cos((p->angle) * (3.14159 / 180.0));
+  result.y = p->distance * std::sin((p->angle) * (3.14159 / 180.0));
+  return result;
+}
