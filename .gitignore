@@ -58,6 +58,8 @@ x86/
 
 # --- CMake & Ninja Specific ---
 build/           # 빌드 결과물 전체 
+**/build/
+build/
 .ninja_deps
 .ninja_log
 CMakeCache.txt
