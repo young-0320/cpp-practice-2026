@@ -55,3 +55,17 @@ x86/
 # Temporary files
 *.tmp
 *.log
+
+# --- CMake & Ninja Specific ---
+build/           # 빌드 결과물 전체 
+.ninja_deps
+.ninja_log
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+install/
+
+# --- IDE & Environment ---
+.cache/          # 컴파일러 캐시
+msys64/          # 혹시라도 프로젝트 내에 설치된 경우 대비
