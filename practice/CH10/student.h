@@ -6,17 +6,24 @@
 #include <cstdint>
 #include <string>
 
+struct lecture {
+  std::string name;
+  std::string semester_offered;
+  std::string grade;
+};
+
 class Student {
  public:
   enum class Status : char {
     kAttending,       // 재학
     kLeaveOfAbsence,  // 휴학
     kGraduated        // 졸업
-  };  // 재학/휴학/졸업 3가지 상태
+  };
+  // 재학/휴학/졸업 3가지 상태
   // 상태 정의는 범위 지정 열거체를 사용하고, 위치는 public
   void show() const;
 
-  void update_gpa(float gpa);
+  void update_gpa(std::string name, std::string semester, std::string grade);
 
   void update_status(Status s);
 
@@ -29,4 +36,6 @@ class Student {
   uint32_t id_;
   float gpa_;
   Status status_;
+  lecture lect[30];
+  uint32_t count = 0;
 };
