@@ -27,6 +27,8 @@ class Student {
 
   void show() const;
 
+  const Student& topGPA(const Student& st) const;
+
   void update_gpa(const std::string& in_name, const std::string& in_semester,
                   const std::string& in_grade);
 
@@ -35,6 +37,7 @@ class Student {
   Student(const std::string& name = "Noname", uint32_t id = 0, float gpa = 0,
           Status s = Status::kAttending);
   // 생성자는 까먹지 말고 만들기
+  double get_gpa() const;
 
  private:
   std::string name_;
