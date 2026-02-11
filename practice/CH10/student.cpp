@@ -7,9 +7,8 @@
 #include <algorithm>  // std::sort
 #include <iomanip>
 #include <iostream>
-#include <unordered_map>
 
-double get_gpa(const std::string& grade);
+float grade_to_gpa(const std::string& grade);
 Student::Student(const std::string& name, uint32_t id, float gpa, Status s)
     : name_(name), id_(id), gpa_(gpa), status_(s) {}
 
@@ -23,42 +22,43 @@ void Student::show() const {
   cout << std::setfill(' ');
   cout << "GPA : " << gpa_ << endl;
   // cout << "status : " << status_str[static_cast<int>(this->status_)] << endl;
-
+  std::map<std::string, std::vector<lecture>> grouped_lectures;
+  for (uint32_t i = 0; i < count_; ++i) {
+    grouped_lectures[lect[i].semester_offered].push_back(lect[i]);
+  }
+  for (const auto& [semester, lectures] : grouped_lectures) {
+    std::cout << "[" << semester << " 학기]" << std::endl;
+    for (const auto& l : lectures) {
+      std::cout << l.name << " : " << l.grade << std::endl;
+    }
+  }
   cout << "---------------------------------------------" << endl;
 }
 
 void Student::update_status(Status s) { status_ = s; }
+// TODO : LAB+10.3 학기별로 정렬하고 출력하는 로직
+void Student::update_gpa(const std::string& in_name,
+                         const std::string& in_semester,
+                         const std::string& in_grade) {
+  lect[count_].name = in_name;
+  lect[count_].semester_offered = in_semester;
+  lect[count_].grade = in_grade;
 
-void Student::update_gpa(std::string in_name, std::string in_semester,
-                         std::string in_grade) {
-  lect[count].name = in_name;
-  lect[count].semester_offered = in_semester;
-  lect[count].grade = in_grade;
-  double total = 0.0;
-  for (int i = 0; i <= count; ++i) {
-    total += get_gpa(lect[i].grade);
-  }
-  gpa_ = total / ((double)(count + 1));
+  total_gpa += grade_to_gpa(in_grade);
 
-  sort_lect(lect, (count + 1));
-  count++;
+  gpa_ = total_gpa / ((double)(count_ + 1));
+
+  count_++;
 }
 
-double get_gpa(const std::string& grade) {
-  static const std::unordered_map<std::string, double> gpa_table = {
-      {"A+", 4.3}, {"A0", 4.0}, {"A-", 3.7}, {"B+", 3.3}, {"B0", 3.0},
-      {"B-", 2.7}, {"C+", 2.3}, {"C0", 2.0}, {"C-", 1.7}, {"D+", 1.3},
-      {"D0", 1.0}, {"D-", 0.7}, {"F", 0.0}};
-
-  auto it = gpa_table.find(grade);
-  if (it != gpa_table.end()) {
-    return it->second;
+float Student::grade_to_gpa(const std::string& grade) {
+  int index = 0;
+  for (const auto& arr : Student::grade_map) {
+    if (grade == arr) {
+      break;
+    }
+    ++index;
   }
-  return 0.0;  // 성적을 찾지 못했을 때의 기본 반환값 추가
-}
-void sort_lect(lecture* lect, size_t size) {
-  std::sort(lect, lect + size, [](const lecture& a, const lecture& b) {
-    return a.semester_offered < b.semester_offered;
-  });
-  // 범위 지정, 람다 함수 사용
+
+  return Student::gpa_map[index];
 }
