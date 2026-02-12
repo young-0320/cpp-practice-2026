@@ -44,7 +44,7 @@ int main() {
   v_s[2].show();
   v_s[3].show();
   const Student* top = &v_s[0];
-  for (int i = 0; i < size(v_s); ++i) {
+  for (int i = 1; i < size(v_s); ++i) {
     top = &top->topGPA(v_s[i]);
   }
 

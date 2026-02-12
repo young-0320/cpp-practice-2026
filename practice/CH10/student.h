@@ -3,7 +3,7 @@
 // LAB_10.1
 #pragma once
 
-#include <cstdint>
+#include <cstdint> //uint32_t type 사용
 #include <map>
 #include <string>
 #include <string_view>
