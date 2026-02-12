@@ -6,7 +6,7 @@ void MyComplex::show() const {
   using std::cout, std::endl;
   char c;
   c = (y_ > 0) ? '+' : '-';
-  cout << "show mycomplex : " << x_ << c << "i" << y_ << endl;
+  cout << x_ << " " << c << " " << "i" << y_;
 }
 
 MyComplex MyComplex::operator+(const MyComplex& t) const {
@@ -20,7 +20,13 @@ MyComplex MyComplex::operator-(const MyComplex& t) const {
 MyComplex MyComplex::operator*(double n) const {
   return MyComplex(x_ * n, y_ * n);
 }
-// 프렌드 * 오버도링
+// 프렌드 오버로딩
+MyComplex operator+(double a, const MyComplex& t) {
+  return MyComplex(t.x_ + a, t.y_);
+}
+MyComplex operator-(double a, const MyComplex& t) {
+  return MyComplex(t.x_ - a, t.y_);
+}
 MyComplex operator*(double a, const MyComplex& t) { return t * a; }
 
 std::ostream& operator<<(std::ostream& os, const MyComplex& t) {

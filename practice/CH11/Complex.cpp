@@ -37,34 +37,12 @@
 //   re += y.re;
 //   im += y.im;
 //   return *this;
-// }  // .
-// complex complex::operator+(const complex& y) {
-//   complex c;
-//   c.re = re + y.re;
-//   c.im = im + y.im;
-//   return c;
-// }  // 
-// complex complex::operator-(const complex& y) {
-//   complex c;
-//   c.re = re - y.re;
-//   c.im = im - y.im;
-//   return c;
-// }  // 
-// complex complex::operator*(const complex& y) {
-//   complex c;
-//   c.re = re * y.re - im * y.im;
-//   c.im = re * y.im + im * y.re;
-//   return c;
-// }
+// }  
+
 // complex complex::operator/(const double& y) {
 //   complex c;
 //   c.re = re / y;
 //   c.im = im / y;
 //   return c;
 // }
-// complex complex::operator*(const double& y) {
-//   complex c;
-//   c.re = re * y;
-//   c.im = im * y;
-//   return c;
-// }
+

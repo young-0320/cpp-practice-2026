@@ -29,7 +29,8 @@ class MyComplex {
   MyComplex operator*(double n) const;
 
   // 프렌드 함수
-
+  friend MyComplex operator+(double a, const MyComplex& t);
+  friend MyComplex operator-(double a, const MyComplex& t);
   friend std::ostream& operator<<(std::ostream& os, const MyComplex& t);
   friend MyComplex operator*(double a, const MyComplex& t);
 
