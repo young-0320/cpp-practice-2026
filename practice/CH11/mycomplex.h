@@ -15,9 +15,13 @@ class MyComplex {
   explicit MyComplex(double theta) : x_(cos(theta)), y_(sin(theta)) {}
 
   // 멤버 함수
-  double get_magnitude() const;
+  double get_magnitude() const { return std::sqrt(x_ * x_ + y_ * y_); }
+
   void show() const;
-  void set_value(double a, double b);
+  void MyComplex::set_value(double a, double b) {
+    x_ = a;
+    y_ = b;
+  }
 
   // 연산자 오버로딩
   MyComplex operator+(const MyComplex& t) const;
@@ -27,7 +31,8 @@ class MyComplex {
   // 프렌드 함수
 
   friend std::ostream& operator<<(std::ostream& os, const MyComplex& t);
-  friend MyComplex operator*(double a ,const MyComplex & t);
+  friend MyComplex operator*(double a, const MyComplex& t);
+
  private:
   double x_ = 0.0, y_ = 0.0;
 };
