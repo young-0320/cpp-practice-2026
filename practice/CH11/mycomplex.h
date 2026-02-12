@@ -18,7 +18,7 @@ class MyComplex {
   double get_magnitude() const { return std::sqrt(x_ * x_ + y_ * y_); }
 
   void show() const;
-  void MyComplex::set_value(double a, double b) {
+  void set_value(double a, double b) {
     x_ = a;
     y_ = b;
   }
