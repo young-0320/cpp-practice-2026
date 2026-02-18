@@ -15,6 +15,6 @@ int main() {
   s2.stringup();
   std::cout << s2;
   s3.stringlow();
-  std::cout << s3;
+  std::cout << s3 << std::endl;
   return 0;
 }
