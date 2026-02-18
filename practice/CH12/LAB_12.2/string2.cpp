@@ -79,11 +79,14 @@ std::ostream& operator<<(std::ostream& os, const String& st) {
 
 std::istream& operator>>(std::istream& is, String& st) {
   char buffer[100];
-  std::cin.getline(buffer, 100);
+  is.getline(buffer, 100);
+
+  delete[] st.str;
+
   st.len = std::strlen(buffer);
   st.str = new char[st.len + 1];
   std::strncpy(st.str, buffer, st.len + 1);
-  st.str[st.len + 1] = '\0';
+  st.str[st.len] = '\0';
 
   return is;
 }
