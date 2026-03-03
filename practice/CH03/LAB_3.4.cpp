@@ -8,7 +8,7 @@ int main() {
 }
 
 void show(int a) {
-  std::cout << a << std::endl;
-  std::cout << ",    " << static_cast<char>(a) << std::endl;
-  std::cout << ",   " << static_cast<char>(toupper(a)) << std::endl;
+  std::cout << a;
+  std::cout << ",   " << static_cast<char>(a);
+  std::cout << ",   " << static_cast<char>(toupper(a));
 }
