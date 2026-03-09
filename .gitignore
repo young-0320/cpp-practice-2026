@@ -60,7 +60,7 @@ x86/
 docs/source_code        # 특정 경로만 무시
 docs/source_code/       # 폴더임을 명시
 **/source_code          # 어느 위치든 source_code 폴더 무시
-
+docs/source_code/**
 
 # --- CMake & Ninja Specific ---
 build/           # 빌드 결과물 전체 
