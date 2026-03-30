@@ -10,6 +10,6 @@ int main() {
   for (int i = 0; name[i] != '\0'; ++i) {
     cout << name[i] << ": " << int(name[i]) << endl;
   }
-
+  cout << "name is " << name << endl;
   return 0;
 }
