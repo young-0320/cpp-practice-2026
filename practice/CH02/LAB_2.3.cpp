@@ -1,4 +1,4 @@
-// celcius.cpp --화씨를 섭씨로
+// celsius.cpp --화씨를 섭씨로
 #include <iostream>
 int main() {
   using namespace std;

@@ -1,7 +1,6 @@
 #include <climits>
 #include <iostream>
 // short와 int의 최대값을 출력하는 프로그램
-// intch는 <climits> 헤더 파일에 정의되어 있습니다.
 
 int main() {
   std::cout << "short의 최대값: " << SHRT_MAX << std::endl;

@@ -1,4 +1,4 @@
-// sum/cpp - sum two integers
+// sum.cpp - sum two integers
 #include <iostream>
 void mysum(int a, int b);
 int main() {
