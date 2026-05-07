@@ -6,7 +6,7 @@
 #include <iostream>
 
 int main() {
-  std::cout << "--- LAB 10.3 TEST START ---" << std::endl;
+  std::cout << "LAB 10.3 TEST START" << std::endl;
 
   Student one("Alice", 20251234, 0.0f, Student::Status::Enrolled);
 
