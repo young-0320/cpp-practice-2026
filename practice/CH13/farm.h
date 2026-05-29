@@ -10,6 +10,13 @@ class Animal {
   int age;
 };
 
+class Cow : public Animal {
+ public:
+  Cow() : Animal() {}
+  virtual ~Cow() = default;
+  void speak() const override { std::cout << "Cow speak: Moo!\n"; }
+};
+
 class Cat : public Animal {
  public:
   Cat() : Animal() {}
